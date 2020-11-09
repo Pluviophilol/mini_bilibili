@@ -1,0 +1,65 @@
+<view class="main">
+  <MyTitle></MyTitle>
+  <!-- 视频详情 -->
+  <view class="video_info">
+    <!-- 视频标签 -->
+    <video src="{{detail.redirect_url}}" controls></video>
+    <!-- 视频标题 -->
+    <view class="video_title">
+      <text>{{detail.title}}</text>
+      <text class="fa fa-angle-down"></text>
+    </view>
+    <!-- 视频相关 -->
+    <view class="video_detail">
+      <!-- 作者 -->
+      <text class="author">{{detail.owner.name}}</text>
+      <!-- 播放量 -->
+      <text class="play_count">{{detail.stat.view}}</text>
+      <!-- 弹幕数 -->
+      <text class="comment_count">{{detail.stat.danmaku}}弹幕</text>
+      <!-- 时间 -->
+      <text class="date">{{detail.pubdate}}</text>
+    </view>
+  </view>
+  <!-- 推荐视频 -->
+  <view class="recommend_list">
+    <navigator wx:for="{{recList}}" wx:key="index" class="item_rec">
+      <!-- 图片容器 -->
+      <view class="rec_img_wrap">
+        <image src="{{item.pic}}" mode="widthFix" />
+      </view>
+      <!-- 视频详情 -->
+      <view class="rec_info">
+        <!-- 标题 -->
+        <view class="rec_title">{{item.title}}</view>
+        <!-- 信息 -->
+        <view class="rec_detail">
+          <!-- 播放量 -->
+          <text class="play_count">{{item.play}}次观看</text>
+          <!-- 弹幕数 -->
+          <text class="comment_count">{{item.review}}弹幕</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!-- 评论区 -->
+  <view class="comment_wrap">
+    <view class="comment_title">评论 ( {{ commentData.comentTotalCount }} )</view>
+    <view class="comment_list">
+      <view class="comment_item" wx:for="{{commentData.commentList}}" wx:key="index">
+        <!-- 左侧 -->
+        <view class="comment_user">
+          <image src="{{item.userIconSrc}}" mode="widthFix" />
+        </view>
+        <!-- 右侧 -->
+        <view class="comment_info">
+          <view class="comment_detail">
+            <text class="author">{{item.username}}</text>
+            <text class="date">{{item.commentDate}}</text>
+          </view>
+          <view class="comment_content">{{item.commentInfo}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
